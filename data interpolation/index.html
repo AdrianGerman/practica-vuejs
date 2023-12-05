@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="es ">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mi primer vlog con Vuejs</title>
+  </head>
+
+  <body>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <div id="app"></div>
+    <script>
+      const vm = Vue.createApp({
+        data() {
+          return {
+            text: "<h1>Hola desde VUEjs</h1>",
+          };
+        },
+        template: `<div v-html="text"></div>`,
+        // v-once = hace que el texto se renderize una sola vez, por lo cual,
+        // si el dato cambia no se veria reflejado ese cambio en el texto
+
+        // v-html = hace que renderize la variable text como un HTML, por lo cual si la variable text
+        // tiene etiquetas HTML, v-html las renderiza, de lo contrario las etiquetas serian parte del texto.
+      }).mount("#app");
+      console.log(vm);
+    </script>
+  </body>
+</html>
