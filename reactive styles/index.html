@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="es ">
   <head>
-    <link rel="stylesheet" href="../styles/style.css" />
+    <link rel="stylesheet" href="../styles/reactive_style.css" />
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Watchers</title>
+    <title>Estilos reactivos</title>
   </head>
 
   <body>
@@ -16,6 +16,7 @@
           return {
             text: "Puerta cerrada",
             open: false,
+            styles: {},
           };
         },
         watch: {
@@ -31,11 +32,15 @@
           label() {
             return this.open ? "Cerrar" : "Abrir";
           },
+          buttonStyle() {
+            return this.open ? ["open"] : ["close"];
+          },
         },
         template: `
-          <div>{{ text }}</div>
+        <div class="container" :class="buttonStyle">
+          <h2>{{ text }}</h2>
           <button @click="open = !open">{{ label }}</button>
-
+        </div>
         `,
       }).mount("#app");
     </script>
