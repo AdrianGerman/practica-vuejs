@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="es ">
+  <head>
+    <link rel="stylesheet" href="../styles/style.css" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mi primer vlog con Vuejs</title>
+  </head>
+
+  <body>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <div id="app"></div>
+    <script>
+      const vm = Vue.createApp({
+        data() {
+          return {
+            attr: "src",
+            img: "https://fastly.picsum.photos/id/911/500/500.jpg?hmac=xTA8uLSDRUM9InoH7otKouVYgKYu-eROBYnkY7JGZtQ",
+          };
+        },
+        template: `<img v-bind:[attr]="img" />`,
+      }).mount("#app");
+      console.log(vm);
+    </script>
+  </body>
+</html>
