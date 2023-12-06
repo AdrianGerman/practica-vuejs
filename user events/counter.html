@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es ">
+  <head>
+    <link rel="stylesheet" href="../styles/style.css" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ejercicio de contador</title>
+  </head>
+
+  <body>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <div id="app"></div>
+    <script>
+      const vm = Vue.createApp({
+        data() {
+          return {
+            counter: 0,
+          };
+        },
+        methods: {
+          increment() {
+            this.counter++;
+          },
+          decrement() {
+            this.counter--;
+          },
+        },
+        template: `
+            <h1>{{ counter }}</h1>
+            <button v-on:click="decrement">-</button>
+            <button v-on:click="increment">+</button>
+        `,
+      }).mount("#app");
+      console.log(vm);
+    </script>
+  </body>
+</html>
