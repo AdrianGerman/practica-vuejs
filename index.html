@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es ">
+  <head>
+    <link rel="stylesheet" href="../styles/style.css" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mi primer vlog con Vuejs</title>
+  </head>
+
+  <body>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <div id="app">
+      <div class="titles">
+        <h2>
+          Hola muy buenas, este pequeño sitio web recopila todo lo aprendido del
+          curso básico de VueJS
+        </h2>
+        <h3>Has clic en cualquier link para acceder a los ejercicios</h3>
+        <div class="img-logo">
+          <img src="./img/vueblog.png" alt="logo" />
+        </div>
+      </div>
+
+      <p>1. Ejemplo basico</p>
+      <a href="./basic example/index.html">Ingresa aquí</a>
+
+      <p>2. Interpolación de datos</p>
+      <a href="./data interpolation/index.html">Ingresa aquí</a>
+
+      <p>3. Atributos reactivos</p>
+      <a href="./reactive attributes/index.html">Ingresa aquí</a>
+
+      <p>4. Eventos de usuario</p>
+      <a href="./user events/index.html">Ingresa aquí</a>
+    </div>
+    <script>
+      const vm = Vue.createApp({
+        data() {
+          return {};
+        },
+      }).mount("#app");
+      console.log(vm);
+    </script>
+  </body>
+</html>
