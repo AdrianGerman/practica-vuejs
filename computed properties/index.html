@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es ">
+  <head>
+    <link rel="stylesheet" href="../styles/style.css" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Propiedades computadas</title>
+  </head>
+
+  <body>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <div id="app"></div>
+    <script>
+      const vm = Vue.createApp({
+        data() {
+          return {
+            firstName: "Lizbeth",
+            lastName: "Terrones",
+            now: new Date(),
+          };
+        },
+        methods: {
+          submit(e) {},
+        },
+        computed: {
+          fullName() {
+            return this.firstName + " " + this.lastName;
+          },
+          today() {
+            return this.now.toLocaleDateString();
+          },
+        },
+        template: `
+        <div>{{ fullName }}</div>
+        <div>{{ today }}</div>
+        `,
+      }).mount("#app");
+    </script>
+  </body>
+</html>
