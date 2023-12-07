@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es ">
+  <head>
+    <link rel="stylesheet" href="../styles/style.css" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Comunicación con componentes profundos</title>
+  </head>
+
+  <body>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <div id="app"></div>
+    <script>
+      const app = Vue.createApp({
+        data() {
+          return {
+            text: "Hola Yeah Yeah Hermano",
+          };
+        },
+        provide() {
+          return {
+            otroTexto: this.text,
+          };
+        },
+        template: `
+          <div>{{ text }}</div>
+          <otro />
+        `,
+      });
+
+      app.component("otro", {
+        template: `<tercer />`,
+      });
+
+      app.component("tercer", {
+        inject: {
+          otroTexto: {
+            from: "otroTexto",
+          },
+        },
+        template: `
+          <div>{{ otroTexto }}</div>
+        `,
+      });
+
+      app.component("v-input", {
+        template: `
+            <input type="text" v-bind:value="value" v-on:input="input" />
+        `,
+      });
+
+      const vm = app.mount("#app");
+    </script>
+  </body>
+</html>
