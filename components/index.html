@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es ">
+  <head>
+    <link rel="stylesheet" href="../styles/list.css" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>List</title>
+  </head>
+
+  <body>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <div id="app"></div>
+    <script>
+      const app = Vue.createApp({
+        data() {
+          return {
+            text: "Accede a tu cuenta",
+            open: false,
+            username: "",
+            posts: [
+              {
+                title: "Titulo 1",
+                description:
+                  "Descripcion, aqui va todo el texto que quieras escribir, Yeah Yeah Hermano!",
+              },
+              {
+                title: "Titulo 2",
+                description:
+                  "Descripcion, aqui va todo el texto que quieras escribir, Yeah Yeah Hermano!",
+              },
+              {
+                title: "Titulo 3",
+                description:
+                  "Descripcion, aqui va todo el texto que quieras escribir, Yeah Yeah Hermano!",
+              },
+            ],
+          };
+        },
+        watch: {
+          open(value) {
+            if (value) {
+              this.text = "Sesión iniciada";
+            } else {
+              this.text = "Accede a tu cuenta";
+              this.username = "";
+            }
+          },
+        },
+        computed: {
+          label() {
+            return this.open ? "Salir" : "AccederAcceder";
+          },
+          buttonStyle() {
+            return this.open ? ["open"] : ["close"];
+          },
+        },
+        template: `
+        <div class="container" :class="buttonStyle">
+          <h2>{{ text }}</h2>
+          <div v-if="open">
+            <p>Hola, {{ username }}</p>
+            <div class="list">
+                <item v-for="(item, i) in post" 
+                :key="i" 
+                :post="item"
+                />
+            </div>
+          </div>
+          <div v-else>
+            <label>Username</label>
+            <input type="text" v-model="username" />
+          </div>
+          <button @click="open = !open">
+            <div v-if="!open">Acceder</div>
+            <div v-if="open">Salir</div>
+          </button>
+        </div>
+        `,
+      });
+
+      app.component("item", {
+        props: ["post"],
+        template: `
+          <div class="item">
+            <div class="title">{{ post.title }}</div>
+            <p>{{ post.description }}</p>
+          </div>
+        `,
+      });
+
+      const vm = app.mount("#app");
+    </script>
+  </body>
+</html>
